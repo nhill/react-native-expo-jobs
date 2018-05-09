@@ -39,7 +39,6 @@ export default class Slides extends React.Component {
 
 const styles = {
   textStyle: {
-    fontSize: 30,
     color: '#fff'
   },
   slide: {

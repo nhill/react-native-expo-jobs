@@ -3,10 +3,17 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Swipe from '../components/Swipe';
 import { MapView } from 'expo';
-import { Card, Button } from 'react-native-elements';
+import { Card, Button, Icon } from 'react-native-elements';
 import * as actions from '../actions';
 
 class DeckScreen extends Component {
+  static navigationOptions = {
+    title: 'Jobs',
+    tabBarIcon:  ({tintColor}) => {
+        return <Icon name="description" size={30} color={tintColor} />
+    }
+  };
+
   renderCard(job) {
     const initialRegion = {
       latitude: job.latitude,
@@ -39,9 +46,17 @@ class DeckScreen extends Component {
     );
   }
 
-  renderNoMoreCards() {
+  renderNoMoreCards = () => {
     return (
-      <Card title="No more jobs" />
+      <Card title="No more jobs">
+        <Button
+          title="Back to Map"
+          large
+          icon={{ name: 'my-location' }}
+          backgroundColor="#03a9f4"
+          onPress={() => this.props.navigation.navigate('map')}
+        />
+      </Card>
     );
   }
 
